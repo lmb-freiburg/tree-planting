@@ -1,6 +1,6 @@
 # Climate-sensitive Urban Planning Through Optimization of Tree Placements
 
-This is the code for the paper "Climate-sensitive Urban Planning Through Optimization of Tree Placements".
+This is the code for the paper [Climate-sensitive Urban Planning Through Optimization of Tree Placements](https://arxiv.org/abs/2310.05691).
 
 If this work is useful to you, please consider citing our paper:
 
@@ -35,9 +35,9 @@ We are in discussions with the city of Freiburg to get permission to share the d
 
 Below we provide details for the training of the various models.
 
-### Training of model $f_{T_{\text{mrt}}}$
+### Training of estimation of point-wise mean radiant temperatures
 
-This model receives spatio-temporal input to estimate point-wise $T_{\text{mrt}}$, following [Briegel et al, 2023](https://www.sciencedirect.com/science/article/pii/S2212095522002772). You can train the model by running
+The model $f_{T_{\text{mrt}}}$ receives spatio-temporal input to estimate point-wise $T_{\text{mrt}}$, following [Briegel et al, 2023](https://www.sciencedirect.com/science/article/pii/S2212095522002772). You can train the model by running
 
 ```bash
 python train_tmrt.py \
@@ -48,9 +48,9 @@ results/tmrt_model \
 --without_aveg
 ```
 
-### Training of model $f_{\text{svf}}$
+### Training of estimation of sky view factors for vegetation
 
-This model estimates the sky view factors for vegetation given the digital surface model for vegetation. To train the model run
+The model $f_{\text{svf}}$ estimates the sky view factors for vegetation given the digital surface model for vegetation. To train the model run
 
 ```bash
 python train_dsmv_to_svfs.py \
@@ -62,9 +62,9 @@ results/dsmv_to_svf \
 --veg_only
 ```
 
-### Training of model $f_{T^{M,\phi}_{\text{mrt}}}$
+### Training of estimation of aggregated, point-wise mean radiant temperatures
 
-Since estimating aggregated, point-wise $T_{\text{mrt}}$ is computationally very expensive, we train a model that directly estimates it.
+Since estimating aggregated, point-wise $T_{\text{mrt}}$ is computationally very expensive, we train a model $f_{T^{M,\phi}_{\text{mrt}}}$ that directly estimates it.
 To this end, you first need to generate the training data:
 
 ```bash
